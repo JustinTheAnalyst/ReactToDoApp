@@ -25,7 +25,9 @@ const TodoList = () => {
         <TodoInput value={todo} onChange={(e) => setTodo(e.target.value)} />
         <AddTodo className="fas fa-plus" onClick={addButtonHandler} />
       </TodoCategoryHeader>
-      <TodoItem />
+      {todos.map((todo, index) => (
+        <TodoItem key={index} todo={todo} />
+      ))}
     </Wrapper>
   );
 };
