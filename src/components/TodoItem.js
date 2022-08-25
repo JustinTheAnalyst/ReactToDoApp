@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, todos, setTodos }) => {
+  const [editedTodo, setEditedTodo] = useState(todo.title);
+
+  const deleteTask = () => {
+    console.log(todo.id, todo.title, "fire");
+    const clickedTodoID = todo.id;
+
+    setTodos(todos.filter((todo) => todo.id !== clickedTodoID));
+
+    console.log(todos);
+  };
+
   return (
     <>
       <TodoListItem>
         <Checkbox className="far fa-circle" />
-        <input style={{ textDecoration: "none" }} value={todo} />
+        <input
+          style={{ textDecoration: "" }}
+          value={editedTodo}
+          onChange={(e) => setEditedTodo(e.target.value)}
+        />
 
         <SaveTodo className="fas fa-check" />
-        <DeleteTodo className="fas fa-trash-alt" />
+        <DeleteTodo className="fas fa-trash-alt" onClick={deleteTask} />
       </TodoListItem>
     </>
   );
@@ -63,5 +78,6 @@ const SaveTodo = styled.i`
   &:hover {
     background-color: #2b6127;
     transition: 0.3s;
+    cursor: pointer;
   }
 `;

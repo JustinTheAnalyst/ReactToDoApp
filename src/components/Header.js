@@ -22,7 +22,10 @@ const Header = () => {
 
       <HeaderItem>
         <Profile>
-          <img src="https://avatars.githubusercontent.com/u/84177062?s=200" />
+          <img
+            alt=""
+            src="https://avatars.githubusercontent.com/u/84177062?s=200"
+          />
         </Profile>
       </HeaderItem>
     </Wrapper>
